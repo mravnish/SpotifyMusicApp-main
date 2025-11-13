@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Notification Example</title>
+        <link rel="stylesheet" href="styles.css">
+        <style>
+            /* Styles for the notification */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+        </style>
+    </head>
+    <body>
+
+        <!-- <h2>Notification Example</h2>
+
+        Button to trigger the notification
+        <button onclick="showNotification()">Show Notification</button> -->
+
+        <!-- Container for the notification -->
+        <!-- <div id="notificationContainer" class="notification-container"></div> -->
+
+        <script>
+            // Create a notification element
+var notification = document.createElement("div");
+notification.className = "notification";
+notification.textContent = "This is a notification!";
+
+// Append the notification to the body
+document.body.appendChild(notification);
+
+// Remove the notification after 3 seconds
+setTimeout(function() {
+    document.body.removeChild(notification);
+}, 3000);
+
+        </script>
+    </body>
+</html>

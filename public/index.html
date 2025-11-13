@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotifyavi - Web player: Music for everyone</title>
+
+    <!-- Correct relative paths -->
+    <link rel="stylesheet" href="css/utility.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <div class="container flex bg-black">
+      <div class="left">
+        <div class="close">
+          <img class="invert" width="30" src="img/close.svg" alt="close" />
+        </div>
+
+        <div class="home bg-gray rounded m-1 p-1">
+          <div class="logo">
+            <img width="100" class="invert" src="img/logo.svg" alt="logo" />
+          </div>
+
+          <ul>
+            <li><img class="invert" src="img/home.svg" alt="home" />Home</li>
+            <li><img class="invert" src="img/search.svg" alt="search" />Search</li>
+          </ul>
+        </div>
+
+        <div class="library bg-gray rounded m-1 p-1">
+          <div class="heading">
+            <img class="invert" src="img/playlist.svg" alt="playlist" />
+            <h2>Your Library</h2>
+          </div>
+
+          <div class="songList">
+            <ul></ul>
+          </div>
+
+          <div class="footer">
+            <div class="footer-first">
+              <h2>Created By Mr_Avnish__</h2>
+              <h3>
+                Copyright © <span id="year"></span>
+                Sorting Spotifyavi. All Rights Reserved.
+              </h3>
+            </div>
+
+            <div class="social-media">
+              <a
+                class="invert"
+                href="https://www.linkedin.com/in/avnish-kumar-9118bb255/"
+                target="_blank"
+              >
+                <img src="img/linkdin.svg" alt="linkedin" />
+              </a>
+
+              <a
+                class="invert"
+                href="https://github.com/mravnish"
+                target="_blank"
+              >
+                <img src="img/github.svg" alt="github" />
+              </a>
+
+              <a
+                class="invert"
+                href="https://www.facebook.com/profile.php?id=100042813069225"
+                target="_blank"
+              >
+                <img src="img/facebook.svg" alt="facebook" />
+              </a>
+
+              <a
+                class="invert"
+                href="https://www.instagram.com/mr_avnish_____/"
+                target="_blank"
+              >
+                <img src="img/instagram.svg" alt="instagram" />
+              </a>
+
+              <a
+                class="invert"
+                href="https://twitter.com/VshAvnish"
+                target="_blank"
+              >
+                <img src="img/twitter.svg" alt="twitter" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right border bg-gray rounded">
+        <div class="header">
+          <div class="nav">
+            <div class="hamburgerContainer">
+              <img class="invert hamburger" src="img/hamburger.svg" alt="menu" />
+              <img src="img/arrow-left-01.svg" alt="left" />
+              <img src="img/arrow-right-01.svg" alt="right" />
+            </div>
+          </div>
+
+          <div class="buttons">
+            <button class="signupbtn btn1">
+              <a href="SignUp.html">Sign Up</a>
+            </button>
+
+            <button class="loginbtn btn2">
+              <a href="LogIn.html">Log In</a>
+            </button>
+          </div>
+        </div>
+
+        <div id="spotifyPlaylists" class="spotifyPlaylists">
+          <h1>Spotify Playlists</h1>
+
+          <div class="cardContainer"></div>
+
+          <div class="playbar">
+            <div class="seekbar">
+              <div class="circle"></div>
+            </div>
+
+            <div class="abovebar">
+              <div class="songinfo"></div>
+
+              <div class="songbuttons">
+                <img width="35" id="previous" src="img/prevsong.svg" alt="prev" />
+                <img width="35" id="play" src="img/play.svg" alt="play" />
+                <img width="35" id="next" src="img/nextsong.svg" alt="next" />
+              </div>
+
+              <div class="timevol">
+                <div class="songtime"></div>
+
+                <div class="volume">
+                  <img width="25" src="img/volume.svg" alt="volume" />
+                  <div class="range">
+                    <input type="range" name="volume" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Correct JS path -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
