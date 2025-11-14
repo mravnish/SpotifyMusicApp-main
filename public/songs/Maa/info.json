@@ -1,4 +1,11 @@
 {
     "title": "Maa Song",
-    "description": "Teri ungli pakar ke"
+    "description": "Teri ungli pakar ke",
+    "songs": [
+    "KGF_MAA.mp3",
+    "Maa_o_meri_maa.mp3",
+    "Meri_Maa_Songs.mp3",
+    "Teri ungli pakar ke chali.mp3",
+    "maa.song.mp3"
+  ]
 }
