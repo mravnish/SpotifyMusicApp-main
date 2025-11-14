@@ -99,7 +99,7 @@ const playMusic = (track, pause = false) => {
 async function displayAlbums() {
     console.log("Displaying albums");
     let response = await fetch("/songs/").then(res => res.text()).catch(err => {
-        console.log(response);
+        console.log("All Response songs : ", response);
         console.error("Failed to fetch albums:", err);
         return "";
     });
@@ -138,7 +138,7 @@ async function displayAlbums() {
                 <img src="${folder}/cover.jpg" alt="Cover">
                 <h2>${metadata.title}</h2>
                 <p>${metadata.description}</p>`;
-                console.log("hiiiiiiiii")
+               
 
             card.addEventListener("click", async () => {
                 console.log("Fetching Songs");
