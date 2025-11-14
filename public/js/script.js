@@ -141,65 +141,108 @@ const playMusic = (track, pause = false) => {
 };
 
 
-async function displayAlbums() {
-    console.log("Displaying albums");
-    let response = await fetch("/songs/").then(res => res.text()).catch(err => {
-        console.log("All Response songs : ", response);
-        console.error("Failed to fetch albums:", err);
-        return "";
-    });
+// async function displayAlbums() {
+//     console.log("Displaying albums");
+//     let response = await fetch("/songs/").then(res => res.text()).catch(err => {
+//         console.log("All Response songs : ", response);
+//         console.error("Failed to fetch albums:", err);
+//         return "";
+//     });
 
-    let div = document.createElement("div");
-    div.innerHTML = response;
-    let anchors = div.getElementsByTagName("a");
-    let cardContainer = document.querySelector(".cardContainer");
-    cardContainer.innerHTML = ""; // Clear previous albums
+//     let div = document.createElement("div");
+//     div.innerHTML = response;
+//     let anchors = div.getElementsByTagName("a");
+//     let cardContainer = document.querySelector(".cardContainer");
+//     cardContainer.innerHTML = ""; // Clear previous albums
 
-    let fragment = document.createDocumentFragment();
-    for (const e of anchors) {
-        if (e.href.includes("/songs") && !e.href.includes(".htaccess")) {
-            let folder = e.href.replace("http//", "http://").replace(/\/+$/, ""); // Sanitize URL
-            console.log("Folder URL:", folder);
+//     let fragment = document.createDocumentFragment();
+//     for (const e of anchors) {
+//         if (e.href.includes("/songs") && !e.href.includes(".htaccess")) {
+//             let folder = e.href.replace("http//", "http://").replace(/\/+$/, ""); // Sanitize URL
+//             console.log("Folder URL:", folder);
 
-            let metadata = await fetch(`${folder}/info.json`).then(res => res.json()).catch(err => {
-                console.error(`Failed to fetch metadata for ${folder}:`, err);
-                return {};
-            });
+//             let metadata = await fetch(`${folder}/info.json`).then(res => res.json()).catch(err => {
+//                 console.error(`Failed to fetch metadata for ${folder}:`, err);
+//                 return {};
+//             });
 
-            if (!metadata || !metadata.title || !metadata.description) {
-                console.log(`Skipping album without metadata: ${folder}`);
-                continue; // Skip if metadata is missing or incomplete
-            }
+//             if (!metadata || !metadata.title || !metadata.description) {
+//                 console.log(`Skipping album without metadata: ${folder}`);
+//                 continue; // Skip if metadata is missing or incomplete
+//             }
 
-            let card = document.createElement("div");
-            card.classList.add("card");
-            card.dataset.folder = folder;
-            card.innerHTML = `
-                <div class="play">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 20V4L19 12L5 20Z" stroke="#141B34" fill="#000" stroke-width="1.5" stroke-linejoin="round" />
-                    </svg>
-                </div>
-                <img src="${folder}/cover.jpg" alt="Cover">
-                <h2>${metadata.title}</h2>
-                <p>${metadata.description}</p>`;
+//             let card = document.createElement("div");
+//             card.classList.add("card");
+//             card.dataset.folder = folder;
+//             card.innerHTML = `
+//                 <div class="play">
+//                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+//                         <path d="M5 20V4L19 12L5 20Z" stroke="#141B34" fill="#000" stroke-width="1.5" stroke-linejoin="round" />
+//                     </svg>
+//                 </div>
+//                 <img src="${folder}/cover.jpg" alt="Cover">
+//                 <h2>${metadata.title}</h2>
+//                 <p>${metadata.description}</p>`;
                
 
-            card.addEventListener("click", async () => {
-                console.log("Fetching Songs");
-                songs = await getSongs(folder);
-                if (songs && songs.length > 0) {
-                    playMusic(songs[0]); // Play the first song if available
-                } else {
-                    console.error("No songs found in folder:", folder);
-                }
-            });
+//             card.addEventListener("click", async () => {
+//                 console.log("Fetching Songs");
+//                 songs = await getSongs(folder);
+//                 if (songs && songs.length > 0) {
+//                     playMusic(songs[0]); // Play the first song if available
+//                 } else {
+//                     console.error("No songs found in folder:", folder);
+//                 }
+//             });
 
-            fragment.appendChild(card);
-        }
+//             fragment.appendChild(card);
+//         }
+//     }
+//     cardContainer.appendChild(fragment);
+// }
+
+
+async function displayAlbums() {
+    console.log("Displaying albums");
+
+    let albums = await fetch("/songs/albums.json")
+        .then(res => res.json())
+        .catch(err => {
+            console.error("Failed to load albums.json:", err);
+            return [];
+        });
+
+    let cardContainer = document.querySelector(".cardContainer");
+    cardContainer.innerHTML = "";
+
+    for (const album of albums) {
+        let card = document.createElement("div");
+        card.classList.add("card");
+        card.dataset.folder = album.folder;
+
+        card.innerHTML = `
+            <div class="play">
+                <svg width="16" height="16"><path d="M5 20V4L19 12L5 20Z"/></svg>
+            </div>
+            <img src="${album.folder}/cover.jpg" alt="Cover">
+            <h2>${album.title}</h2>
+            <p>${album.description}</p>
+        `;
+
+        card.addEventListener("click", async () => {
+            songs = await getSongs(album.folder);
+            if (songs.length > 0) {
+                playMusic(songs[0]);
+            }
+        });
+
+        cardContainer.appendChild(card);
     }
-    cardContainer.appendChild(fragment);
 }
+
+
+
+
 
 // Change here
 async function main() {
