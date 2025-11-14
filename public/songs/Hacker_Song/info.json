@@ -1,4 +1,8 @@
 {
     "title": "Hacker Songs",
-    "description": "Hacker song for you"
+    "description": "Hacker song for you",
+    "songs": [
+    "Hacker song.mp3",
+    "Hackers_motivation.mp3"
+  ]
 }
