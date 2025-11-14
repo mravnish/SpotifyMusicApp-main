@@ -1,4 +1,11 @@
 {
     "title": "ALL Best Songs",
-    "description": "Songs for you"
+    "description": "Songs for you",
+    "songs": [
+    "1.Mai to tere naam.mp3",
+    "2.Sarma ke wo u simat.mp3",
+    "3.Mangal bhawan aa ma.mp3",
+    "4.Teri ungli pakar ke chali.mp3",
+    "5.Hacker song.mp3",
+  ]
 }
