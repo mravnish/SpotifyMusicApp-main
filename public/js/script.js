@@ -98,7 +98,7 @@ const playMusic = (track, pause = false) => {
 
 async function displayAlbums() {
     console.log("Displaying albums");
-    let response = await fetch("/public/songs/").then(res => res.text()).catch(err => {
+    let response = await fetch("/songs/").then(res => res.text()).catch(err => {
         console.error("Failed to fetch albums:", err);
         return "";
     });
@@ -157,7 +157,7 @@ async function displayAlbums() {
 
 // Change here
 async function main() {
-    await getSongs("/public/songs/ncs");
+    await getSongs("/songs/ncs");
     playMusic(songs[0], true);
 
     await displayAlbums();
