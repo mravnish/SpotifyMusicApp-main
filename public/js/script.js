@@ -37,25 +37,70 @@ function secondsToMinutesSeconds(seconds) {
     return `${formattedMinutes}:${formattedSeconds}`;
 }
 
+// async function getSongs(folder) {
+//     currFolder = folder;
+//     console.log("Fetching songs from folder:", folder);
+
+//     let response = await fetch(folder).then(res => res.text()).catch(err => {
+//         console.error("Failed to fetch songs:", err);
+//         return "";
+//     });
+
+//     let div = document.createElement("div");
+//     div.innerHTML = response;
+//     let anchors = div.getElementsByTagName("a");
+
+//     songs = Array.from(anchors)
+//         .filter(anchor => anchor.href.endsWith(".mp3"))
+//         .map(anchor => anchor.href.split(`${folder}/`)[1]);
+
+//     let songUL = document.querySelector(".songList ul");
+//     songUL.innerHTML = ""; // Clear previous songs
+
+//     let fragment = document.createDocumentFragment();
+//     for (const song of songs) {
+//         let li = document.createElement("li");
+//         li.innerHTML = `
+//             <img class="invert" width="34" src="img/music.svg" alt="">
+//             <div class="info">
+//                 <div>${song.replaceAll("%20", " ")}</div>
+//                 <div>
+// Udit & Alka</div>
+//             </div>
+//             <div class="playnow">
+//                 <span>Play Now</span>
+//                 <img class="invert" src="img/play.svg" alt="">
+//             </div>`;
+//         li.addEventListener("click", () => playMusic(song.trim()));
+//         fragment.appendChild(li);
+//     }
+//     songUL.appendChild(fragment);
+
+//     return songs;
+// }
+
+
 async function getSongs(folder) {
     currFolder = folder;
     console.log("Fetching songs from folder:", folder);
 
-    let response = await fetch(folder).then(res => res.text()).catch(err => {
-        console.error("Failed to fetch songs:", err);
-        return "";
-    });
+    // fetch info.json instead of folder listing
+    let metadata = await fetch(`${folder}/info.json`)
+        .then(res => res.json())
+        .catch(err => {
+            console.error("Failed to load info.json:", err);
+            return null;
+        });
 
-    let div = document.createElement("div");
-    div.innerHTML = response;
-    let anchors = div.getElementsByTagName("a");
+    if (!metadata || !metadata.songs) {
+        console.error("No songs found in info.json");
+        return [];
+    }
 
-    songs = Array.from(anchors)
-        .filter(anchor => anchor.href.endsWith(".mp3"))
-        .map(anchor => anchor.href.split(`${folder}/`)[1]);
+    songs = metadata.songs;
 
     let songUL = document.querySelector(".songList ul");
-    songUL.innerHTML = ""; // Clear previous songs
+    songUL.innerHTML = "";
 
     let fragment = document.createDocumentFragment();
     for (const song of songs) {
@@ -64,8 +109,7 @@ async function getSongs(folder) {
             <img class="invert" width="34" src="img/music.svg" alt="">
             <div class="info">
                 <div>${song.replaceAll("%20", " ")}</div>
-                <div>
-Udit & Alka</div>
+                <div>Artist</div>
             </div>
             <div class="playnow">
                 <span>Play Now</span>
@@ -78,6 +122,7 @@ Udit & Alka</div>
 
     return songs;
 }
+
 
 const playMusic = (track, pause = false) => {
     if (!track) {
