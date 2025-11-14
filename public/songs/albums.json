@@ -1,12 +1,82 @@
 [
   {
     "folder": "/songs/Avi",
-    "title": "Avi Songs",
+    "title": "ALL Best Songs",
     "description": "Best Collection"
   },
   {
+    "folder": "/songs/Bajrangbali ji",
+    "title": "Bajrangbali Ji",
+    "description": "Mangal Bhawan aa mangal.."
+  }
+  {
+    "folder": "/songs/Bhajan_(mood)",
+    "title": "Hanuman ji",
+    "description": "Hanumat kare raksha"
+  },
+  {
+    "folder": "/songs/Bright_(mood)",
+    "title": "Bright Songs",
+    "description": "Bright Songs for you"
+  }
+  {
+    "folder": "/songs/Chill_(mood)",
+    "title": "Just Chill",
+    "description": "Yes, Just Chill"
+  },
+  {
+    "folder": "/songs/Dark_(mood)",
+    "title": "Dark Songs",
+    "description": "Dark Songs for you"
+  }
+  {
+    "folder": "/songs/Gadar-2(songs)",
+    "title": "Gadar-2",
+    "description": "Full happy with family"
+  },
+  {
+    "folder": "/songs/Hacker_Song",
+    "title": "Hacker Songs",
+    "description": "Hacker song for you"
+  }
+  {
+    "folder": "/songs/Love_(mood)",
+    "title": "I Love You",
+    "description": "Love is in the air"
+  },
+  {
+    "folder": "/songs/Maa",
+    "title": "Maa Song",
+    "description": "Teri ungli pakar ke"
+  },
+  {
+    "folder": "/songs/New_Arjit_Singh",
+    "title": "Arijit Singh Songs",
+    "description": "Songs for you"
+  },
+  {
+    "folder": "/songs/Pushpa_(Songs)",
+    "title": "Pushpa Songs",
+    "description": "sami_sami song"
+  },
+  {
+    "folder": "/songs/Salman Khan",
+    "title": "Salman Khan",
+    "description": "Chunri Chunri Songs"
+  },
+  {
+    "folder": "/songs/Uplifting_(mood)",
+    "title": "Get up",
+    "description": "You can do it!"
+  },
+  {
+    "folder": "/songs/cs",
+    "title": "JustChill Songs",
+    "description": "Just chill for you"
+  },
+  {
     "folder": "/songs/ncs",
-    "title": "NCS Songs",
-    "description": "Non Copyright Library"
+    "title": "Sleep Songs",
+    "description": "Songs for you"
   }
 ]
