@@ -1,4 +1,7 @@
 {
     "title": "Pushpa Songs",
-    "description": "sami_sami song"
+    "description": "sami_sami song",
+    "songs": [
+    "Sami_Sami song.mp3"
+  ]
 }
